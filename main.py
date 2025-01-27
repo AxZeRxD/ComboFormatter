@@ -85,15 +85,20 @@ class ComboFormatter:
         """
 
         print(Colorate.Horizontal(Colors.green_to_blue, Center.XCenter(banner)))
-        user_input = log.inp("Option: ").strip()
-
-        if user_input.lower() == 'i':
+        uii = log.inp("Option: ")
+        
+        if isinstance(uii, str):  
+            uii = uii.strip()
+        else: 
+            uii = str(uii)
+        
+        if uii.lower() == 'i':
             self.displayinfo()
             return self.displaymenu()
-        elif user_input == '':
+        elif uii == '':
             return self.displaymenu()
         else:
-            return int(user_input)
+            return int(uii)
 
     def displayinfo(self):
         os.system('cls' if os.name == 'nt' else 'clear')
